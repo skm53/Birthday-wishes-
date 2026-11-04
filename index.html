@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday Butki ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;text-align:center;color:white;
+ font-family:'Hind Siliguri',sans-serif;
+ background:radial-gradient(circle,#853568,#411743,#180d2a);
+ min-height:100vh;overflow-x:hidden
+}
+main{padding:35px 16px;position:relative;z-index:2}
+h1{
+ font-family:'Playfair Display',serif;
+ font-size:clamp(40px,10vw,65px);
+ color:#ffe1ec;
+ text-shadow:0 0 25px #ff80bd;
+}
+h2{color:#ffc6df;font-size:32px}
+.date{color:#ffe5ae;font-size:23px;margin:15px}
+.sub{font-size:22px;color:#ffd3e5}
+.photo{
+ width:min(82%,330px);padding:8px;
+ border-radius:180px 180px 25px 25px;
+ background:linear-gradient(45deg,#ffd18b,#ff8cbd,#d8a2ff);
+ box-shadow:0 0 35px #ff8cbd;
+ margin:25px auto;
+}
+.photo img{
+ width:100%;display:block;
+ border-radius:175px 175px 20px 20px;
+}
+.shayari{
+ max-width:580px;margin:25px auto;
+ padding:25px 15px;
+ background:#ffffff16;
+ border:1px solid #ffffff44;
+ border-radius:20px;
+ font-size:20px;line-height:2;
+}
+.sign{font-size:27px;color:#ffd1e5;margin:25px}
+button{
+ padding:14px 25px;border:0;border-radius:30px;
+ background:linear-gradient(90deg,#ffb3d0,#ffe4b0);
+ color:#4b1640;font-weight:bold;font-size:16px;
+ margin:10px;cursor:pointer
+}
+#sky{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.balloon{
+ position:absolute;bottom:-100px;width:35px;height:45px;
+ border-radius:50%;animation:up 12s linear infinite;
+ opacity:.85
+}
+.balloon:after{
+ content:"";position:absolute;top:44px;left:17px;
+ height:75px;border-left:1px solid white
+}
+@keyframes up{
+ to{transform:translateY(-120vh) rotate(20deg)}
+}
+.heart{
+ position:fixed;top:-30px;pointer-events:none;
+ animation:fall 4s linear forwards
+}
+@keyframes fall{
+ to{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+footer{margin:35px;color:#ffd1e5}
+</style>
+</head>
+
+<body>
+<div id="sky"></div>
+
+<main>
+<p style="letter-spacing:4px">A SPECIAL DAY FOR SOMEONE SPECIAL</p>
+
+<h1>Happy Birthday<br>Butki ❤️</h1>
+
+<div class="sub">Wishes You, Sanjeet</div>
+
+<div class="date">🎂 6 November 🎂</div>
+
+<div class="photo">
+<img src="butki-photo.jpg" alt="Butki">
+</div>
+
+<h2>শুভ জন্মদিন, বুটকি! 🌹</h2>
+
+<div class="shayari">
+তোমার হাসিতে রঙিন হোক প্রতিটি সকাল,<br>
+স্বপ্নগুলো ছুঁয়ে যাক নতুন আকাশের আলো।<br>
+জীবনের পথে থাকুক সুখের ফুলের মেলা,<br>
+তোমার প্রতিটি দিন হোক আনন্দে ভরা।<br>
+হাজারো হাসি আর ভালোবাসা রইল তোমার তরে,<br>
+সবসময় এভাবেই থেকো মিষ্টি হাসি মুখভরে। ❤️
+</div>
+
+<div class="sign">
+With Lots of Love,<br>
+Sanjeet ❤️
+</div>
+
+<button onclick="music()">🎵 Play Birthday Song</button>
+<button onclick="celebrate()">🎉 More Surprise</button>
+
+<p>তোমার প্রতিটি মুহূর্ত সুন্দর হোক! 💗</p>
+
+<footer>MADE WITH LOVE FOR BUTKI ❤️</footer>
+</main>
+
+<script>
+// Floating balloons
+const sky=document.getElementById("sky");
+const colors=["#ff83b7","#ffd36e","#b99aff","#ff9eae"];
+
+function balloons(){
+ for(let i=0;i<25;i++){
+  let b=document.createElement("div");
+  b.className="balloon";
+  b.style.left=Math.random()*100+"%";
+  b.style.background=colors[i%4];
+  b.style.animationDelay=Math.random()*10+"s";
+  b.style.animationDuration=(8+Math.random()*8)+"s";
+  sky.appendChild(b);
+ }
+}
+balloons();
+
+// Confetti and hearts
+function celebrate(){
+ for(let i=0;i<70;i++){
+  let h=document.createElement("span");
+  h.className="heart";
+  h.innerHTML=["❤️","💗","✨","🌹"][i%4];
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDelay=Math.random()*2+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+ }
+}
+celebrate();
+
+// Happy Birthday melody (browser-generated)
+let ctx=null,playing=false,timer;
+function music(){
+ if(playing){
+  clearTimeout(timer);
+  if(ctx)ctx.close();
+  ctx=null;playing=false;
+  return;
+ }
+ ctx=new (window.AudioContext||window.webkitAudioContext)();
+ playing=true;
+
+ const notes=[
+ [392,.3],[392,.3],[440,.6],[392,.6],[523,.6],[494,1],
+ [392,.3],[392,.3],[440,.6],[392,.6],[587,.6],[523,1],
+ [392,.3],[392,.3],[784,.6],[659,.6],[523,.6],[494,.6],[440,1],
+ [698,.3],[698,.3],[659,.6],[523,.6],[587,.6],[523,1]
+ ];
+
+ let t=ctx.currentTime;
+ notes.forEach(([f,d])=>{
+  let o=ctx.createOscillator();
+  let g=ctx.createGain();
+  o.frequency.value=f;
+  o.type="sine";
+  g.gain.setValueAtTime(.001,t);
+  g.gain.linearRampToValueAtTime(.12,t+.04);
+  g.gain.exponentialRampToValueAtTime(.001,t+d);
+  o.connect(g);g.connect(ctx.destination);
+  o.start(t);o.stop(t+d);
+  t+=d+.05;
+ });
+ timer=setTimeout(()=>{
+  playing=false;
+  if(ctx)ctx.close();
+  ctx=null;
+ },(t-ctx.currentTime)*1000+500);
+}
+</script>
+</body>
+</html>
